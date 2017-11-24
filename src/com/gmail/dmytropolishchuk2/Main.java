@@ -5,9 +5,8 @@ import java.util.Arrays;
 public class Main {
 
 	public static void main(String[] args) {
-		Student[] studentArray = new Student[10];
-		
-		Student studentOne = new Student("Petro", "Mortal", 19, 60, true, 1);
+		Student[] students = new Student[10];
+		Student studentOne = new Student("Petro", "Mortal", 19, 87, true, 1);
 		Student studentTwo = new Student("Misha", "Ivanov", 20, 65, true, 1);
 		Student studentThree = new Student("Sergo", "Petrov", 21, 78, true, 1);
 		Student studentFour = new Student("Oleg", "Po", 18, 88, true, 1);
@@ -18,20 +17,22 @@ public class Main {
 		Student studentNine = new Student("Bogdan", "Pig", 20, 75, true, 1);
 		Student studentTen = new Student("Oksana", "Petrova", 18, 59, false, 1);
 		Student studentEleven = new Student("John", "Walker", 19, 99, true, 1);
-		studentOne.getGroup();
+		studentOne.getSpecialization();
 		studentOne.sexStudent();
 		studentTen.sexStudent();
 
-		studentArray[0] = studentOne;
-		studentArray[9] = studentTwo;
-		System.out.println(Arrays.toString(studentArray));
-		Group group = new Group();
+		students[0] = studentOne;
+		students[9] = studentTwo;
+		System.out.println(Arrays.toString(students));
+		Group group = new Group("JavaOOP");
 		try {
 
 			group.addStudent(studentOne);
 			group.addStudent(studentTwo);
 			group.addStudent(studentThree);
 			group.addStudent(studentFour);
+			group.addedStudent();
+			System.out.println(Arrays.toString(students));
 			group.addStudent(studentFive);
 			group.addStudent(studentSix);
 			group.addStudent(studentSeven);
@@ -47,7 +48,12 @@ public class Main {
 		group.deletStudent(studentSeven);
 		System.out.println(group);
 		group.searchStudents("Po");
-
+		group.sortStudentBySurName();
+		System.out.println(group);
+		group.sortStudentByName();
+		System.out.println(group);
+		group.sortStudentByAge();
+		System.out.println(group);
 	}
 
 }
