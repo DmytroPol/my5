@@ -58,8 +58,8 @@ public class Student extends Human {
 	}
 
 	public void getSpecialization() {
-		if (this.specNumber > 10 || this.specNumber <= 0) {
-			System.out.println("Invalid input: groupNumber");
+		if (this.specNumber > 6 || this.specNumber < 1) {
+			System.out.println("Invalid input: specializationNumber");
 		}
 
 	}

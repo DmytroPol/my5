@@ -8,17 +8,17 @@ public class Human {
 
 	public Human(int age, double weight, boolean sex) {
 		super();
-		if (age <= 99 && age >= 17) {
+		if (age <= 80 && age >= 17) {
 			this.age = age;
 		} else {
 			System.out.println("Invalid input age");
-			this.age = 00;
+			this.age = 0;
 		}
 		if (weight <= 300 && weight >= 40) {
 			this.weight = weight;
 		} else {
 			System.out.println("Invalid input weight");
-			this.weight = 00;
+			this.weight = 0;
 		}
 
 		this.sex = sex;

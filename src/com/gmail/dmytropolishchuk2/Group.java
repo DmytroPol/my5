@@ -32,7 +32,6 @@ public class Group {
 				students[i] = numberStudent;
 				n = i + 1;
 				System.out.println(numberStudent + " was added in the " + n + " cell");
-
 				return students;
 			}
 		}
@@ -72,8 +71,8 @@ public class Group {
 		for (int i = 0; i < students.length; i++) { // поиск свободного места
 			if (students[i] == null) { // если место в группе нашлось
 				freePlace = i + 1;// записываем номер ячейки
-				System.out.println("Free place was found in the group, in the  " + groupName + " cell:" + freePlace
-						+ " " + Arrays.toString(students) + ". Please enter student data ");
+				System.out.println("Free place was found in the group " + groupName + ", cell:" + freePlace + " "
+						+ Arrays.toString(students) + ". Please enter student data ");
 				break;
 			}
 		}
@@ -88,7 +87,7 @@ public class Group {
 					st.setName(reader.readLine());
 					System.out.println("Please enter student surname(String):");
 					st.setSurName(reader.readLine());
-					System.out.println("Please enter student age (int 17-100):");
+					System.out.println("Please enter student age (int 17-80):");
 					st.setAge(Integer.parseInt(reader.readLine()));
 					System.out.println("Please enter student weight (double 40.0-300.0):");
 					st.setWeight(Integer.parseInt(reader.readLine()));
@@ -97,7 +96,8 @@ public class Group {
 					System.out.println("Please enter student group (int 1-6):");
 					st.setSpecNumber(Integer.parseInt(reader.readLine()));
 					students[freePlace] = st; // добавляем на свободное место
-					System.out.println("Student " + st.getSurName() + " is added to the group: " + st.getSpecNumber());
+					System.out.println("Student " + st.getSurName() + " " + st.getName() + " is added to the group: "
+							+ st.getSpecNumber());
 					break;
 				} catch (Exception e) { // если ввели некоректные данные предлагаем попробовать еще раз
 					System.out.println("Invalid enter, student is not added, try again? (y / n):");
@@ -118,38 +118,20 @@ public class Group {
 	}
 
 	public void sortStudentBySurName() {
-		shiftN();
-		for (int i = students.length - 1; i > 0; i--) {
-			for (int j = 0; j < i; j++) {
-				if (students[j] != null && students[j + 1] != null) {
-					if (students[j].getSurName().compareTo(students[j + 1].getSurName()) > 0) {
-						Student tmp = students[j];
-						students[j] = students[j + 1];
-						students[j + 1] = tmp;
-					}
+		Arrays.sort(students, new Comparator<Student>() {
+			@Override
+			public int compare(Student o1, Student o2) {
+				if (o1 != null && o2 != null) {
+					return o1.getSurName().compareTo(o2.getSurName());
 				}
-
+				return 0;
 			}
-		}
-	}
+		});
 
-	private void shiftN() {
-		for (int i = 0; i < students.length; i++) {
-			if (null == students[i]) {
-				for (int j = students.length - 1; j > i; j--) {
-					if (students[j] != null) {
-						Student temp = students[j];
-						students[j] = students[i];
-						students[i] = temp;
-						break;
-					}
-				}
-			}
-		}
+		System.out.print("Sort by surname: ");
 	}
 
 	public void sortStudentByName() {
-		shiftN();
 		Arrays.sort(students, new Comparator<Student>() {
 			@Override
 			public int compare(Student o1, Student o2) {
@@ -159,10 +141,10 @@ public class Group {
 				return 0;
 			}
 		});
+		System.out.print("Sort by name: ");
 	}
 
 	public void sortStudentByAge() {
-		shiftN();
 		Arrays.sort(students, new Comparator<Student>() {
 			@Override
 			public int compare(Student o1, Student o2) {
@@ -174,6 +156,17 @@ public class Group {
 				return 0;
 			}
 		});
+		System.out.print("Sort by age: ");
+	}
+
+	public static void saveStringToFile(String text, File file) {
+		try (PrintWriter pw = new PrintWriter(file)) {
+			pw.println(text);
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+		}
 	}
 
 	@Override

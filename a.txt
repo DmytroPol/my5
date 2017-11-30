@@ -1,0 +1,1 @@
+Group JavaOOP[Student [name=Petro, surName=Mortal, specializationNumber=1, age=19, weight=87.0, sex=true], null, null, null, null, null, null, null, null, null]
