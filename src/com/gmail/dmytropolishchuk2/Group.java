@@ -159,16 +159,6 @@ public class Group {
 		System.out.print("Sort by age: ");
 	}
 
-	public static void saveStringToFile(String text, File file) {
-		try (PrintWriter pw = new PrintWriter(file)) {
-			pw.println(text);
-
-		} catch (IOException e) {
-
-			e.printStackTrace();
-		}
-	}
-
 	@Override
 	public String toString() {
 		return "Group " + this.groupName + Arrays.toString(students);
