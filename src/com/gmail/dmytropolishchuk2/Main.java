@@ -60,33 +60,6 @@ public class Main {
 		group.sortStudentByAge();
 		System.out.println(group);
 
-//		File file = new File(".txt");
-//		PrintWriter pw = new PrintWriter(System.out, true);
-//		try {
-//			file.createNewFile();
-//		} catch (IOException e) {
-//			pw.println("Error, textTwo was not copied!");
-//		}
-
-		// int[][]array= new int[5][12];
-		// for (int i=0;i<array.length;i++) {
-		// for (int j=0; j<array[i].length;j++){
-		// array[i][j]= (int)(10000+Math.random()*10000);
-		// }
-		// }
-		// String[]lastNames=new String[] {"Ivanov","Petrov","Sidorov", "Lucashenko",
-		// "Poroshenko"};
-		// Student studentOne = new Student("Petro", "Mortal", 19, 87, true, 1);
-		// StringBuilder sb = new StringBuilder();
-		// for(int i=0; i < lastNames.length;i++) {
-		// sb.append(lastNames[i]).append("\t");
-		// for(int j=0; j < array[i].length;j++) {
-		// sb.append(array [i][j]).append("\t");
-		// }
-		// sb.append(System.lineSeparator());
-		// }
-		// saveStringToFile(sb.toString(),file);
-		// }
 		try (PrintWriter a = new PrintWriter("a.txt")) {
 			for (int i = 0; i < 10; i++) {
 				// a.println(i);
