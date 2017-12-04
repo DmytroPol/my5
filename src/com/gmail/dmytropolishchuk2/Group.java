@@ -1,13 +1,19 @@
 package com.gmail.dmytropolishchuk2;
 
 import java.io.*;
+
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.List;
 
 public class Group {
+
 	private String groupName = "?";
 	private Student[] students = new Student[10];
+//	private List<Student> studentGroup = new ArrayList<Student>(10);
 
+	// private ArrayList<Student> list = new ArrayList<>(10);
 	public Group() {
 		super();
 	}
@@ -38,6 +44,11 @@ public class Group {
 		throw new MyException();
 
 	}
+//	public void addD(Student j) {
+//		studentGroup.add(j);
+//	}
+
+
 
 	public Student[] deletStudent(Student numberStudent) {
 

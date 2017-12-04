@@ -1,6 +1,8 @@
 package com.gmail.dmytropolishchuk2;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -9,6 +11,23 @@ import java.io.PrintWriter;
 public class Main {
 
 	public static void main(String[] args) {
+		
+		List<Student> studentGroup = new ArrayList<Student>(10);
+		studentGroup.add(new Student("Petro", "Mortal", 19, 87, true, 1 ));
+		studentGroup.add(new Student("Misha", "Ivanov", 20, 65, true, 2));
+		studentGroup.add(new Student("Sergo", "Petrov", 21, 78, true, 3));
+//		studentGroup.remove(5);
+		try {
+			studentGroup.get(2);
+			studentGroup.remove(1);
+		}catch (IndexOutOfBoundsException e) {
+			System.out.println("Error in the student group->"+e.getMessage());
+		} finally {
+			System.out.println(studentGroup);
+		}
+		studentGroup.set(0, null);
+		System.out.println(studentGroup);
+//		System.out.println(studentGroup);
 		Student[] students = new Student[10];
 		Student studentOne = new Student("Petro", "Mortal", 19, 87, true, 1);
 		Student studentTwo = new Student("Misha", "Ivanov", 20, 65, true, 1);
@@ -24,7 +43,6 @@ public class Main {
 		studentOne.getSpecialization();
 		studentOne.sexStudent();
 		studentTen.sexStudent();
-
 		students[0] = studentOne;
 		students[9] = studentTwo;
 		System.out.println(Arrays.toString(students));
