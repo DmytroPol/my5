@@ -1,8 +1,6 @@
 package com.gmail.dmytropolishchuk2;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -11,23 +9,19 @@ import java.io.PrintWriter;
 public class Main {
 
 	public static void main(String[] args) {
-		
-		List<Student> studentGroup = new ArrayList<Student>(10);
-		studentGroup.add(new Student("Petro", "Mortal", 19, 87, true, 1 ));
-		studentGroup.add(new Student("Misha", "Ivanov", 20, 65, true, 2));
-		studentGroup.add(new Student("Sergo", "Petrov", 21, 78, true, 3));
-//		studentGroup.remove(5);
+
+		Student student1 = new Student("Dmytro", "Polishchuk", 29, 67, true, 1);
+		Student student2 = new Student("Ivan", "Petrenko", 21, 70, true, 2);
+		Group group = new Group("Java1");
 		try {
-			studentGroup.get(2);
-			studentGroup.remove(1);
-		}catch (IndexOutOfBoundsException e) {
-			System.out.println("Error in the student group->"+e.getMessage());
+			group.addD(student1);
+			group.addD(student2);
+		} catch (IndexOutOfBoundsException e) {
+			System.out.println("Error in the student group->" + e.getMessage());
 		} finally {
-			System.out.println(studentGroup);
+			group.toScreen();
 		}
-		studentGroup.set(0, null);
-		System.out.println(studentGroup);
-//		System.out.println(studentGroup);
+
 		Student[] students = new Student[10];
 		Student studentOne = new Student("Petro", "Mortal", 19, 87, true, 1);
 		Student studentTwo = new Student("Misha", "Ivanov", 20, 65, true, 1);
@@ -46,19 +40,27 @@ public class Main {
 		students[0] = studentOne;
 		students[9] = studentTwo;
 		System.out.println(Arrays.toString(students));
-		Group group = new Group("JavaOOP");
+		Group group1 = new Group("JavaOOP");
 		try {
 
-			group.addStudent(studentOne);
-			group.addStudent(studentTwo);
-			group.addStudent(studentThree);
-			group.addStudent(studentFour);
-			group.addStudent(studentFive);
-			group.addStudent(studentSix);
-			group.addStudent(studentSeven);
-			group.addStudent(studentEight);
-			group.addedStudent();
-			group.addStudent(studentNine);
+			group1.addStudent(studentOne);
+			group1.addStudent(studentTwo);
+			group1.addStudent(studentThree);
+			group1.addStudent(studentFour);
+			group1.addStudent(studentFive);
+			group1.addStudent(studentSix);
+			group1.addStudent(studentSeven);
+			group1.addStudent(studentEight);
+			group1.addedStudent();
+			group1.addStudent(studentNine);
+			try (PrintWriter a = new PrintWriter("a.txt")) {
+				for (int i = 0; i < 1; i++) {
+
+					a.println(group1);
+				}
+			} catch (FileNotFoundException e) {
+				System.out.println("ERROR FILE WRITE");
+			}
 			// group.addedStudent();
 			// System.out.println(group);
 			// group.addStudent(studentTen);
@@ -66,27 +68,18 @@ public class Main {
 		} catch (MyException e) {
 			System.out.println(e.getMessage());
 		} finally {
-			System.out.println(group);
+			System.out.println(group1);
 		}
-		group.deletStudent(studentSeven);
-		System.out.println(group);
-		group.searchStudents("Po");
-		group.sortStudentBySurName();
-		System.out.println(group);
-		group.sortStudentByName();
-		System.out.println(group);
-		group.sortStudentByAge();
-		System.out.println(group);
+		group1.deletStudent(studentSeven);
+		System.out.println(group1);
+		group1.searchStudents("Po");
+		group1.sortStudentBySurName();
+		System.out.println(group1);
+		group1.sortStudentByName();
+		System.out.println(group1);
+		group1.sortStudentByAge();
+		System.out.println(group1);
 
-		try (PrintWriter a = new PrintWriter("a.txt")) {
-			for (int i = 0; i < 10; i++) {
-				// a.println(i);
-			}
-			// a.println();
-			a.println(group);
-		} catch (FileNotFoundException e) {
-			System.out.println("ERROR FILE WRITE");
-		}
 	}
 
 	public static void saveStringToFile(String text, File file) {
